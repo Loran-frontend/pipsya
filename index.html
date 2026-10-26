@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Даня и Соня</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#fde8ec">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+
+<main id="lock" class="lock">
+  <form class="lock-card" id="lockForm" autocomplete="off">
+    <div class="lock-heart" aria-hidden="true">💗</div>
+    <h1>Даня <span>и</span> Соня</h1>
+    <p class="lock-sub">Этот сайт только для нас двоих</p>
+    <label class="lock-label" for="pw">Пароль: разгадка с открытки</label>
+    <input id="pw" type="password" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="три ответа подряд" required>
+    <label class="lock-remember"><input type="checkbox" id="remember" checked> запомнить на этом устройстве</label>
+    <button type="submit" id="unlockBtn">Открыть</button>
+    <p class="lock-err" id="lockErr" role="alert"></p>
+  </form>
+</main>
+
+<div id="app" hidden>
+  <header class="hero">
+    <div class="bday" id="bday" hidden></div>
+    <p class="hero-kicker">сайт про нас</p>
+    <h1 class="hero-title">Даня <span>и</span> Соня</h1>
+    <div class="hero-photos" id="heroPhotos"></div>
+    <div class="together">
+      <p>вместе уже</p>
+      <div class="counter" id="counter"></div>
+      <p class="since" id="since"></p>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Разделы">
+    <a href="#story">История</a>
+    <a href="#numbers">Цифры</a>
+    <a href="#photos">Фотки</a>
+    <a href="#jar">Банка</a>
+  </nav>
+
+  <section id="story" class="section">
+    <h2>Наша история</h2>
+    <p class="lead">Как всё было, по нашей же переписке</p>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <section id="numbers" class="section">
+    <h2>Мы в цифрах</h2>
+    <p class="lead">Всё посчитано честно, по каждому сообщению</p>
+    <div class="stats" id="stats"></div>
+    <div class="card chart-card">
+      <h3>Сколько мы писали каждый месяц</h3>
+      <div class="chart" id="chart"></div>
+      <p class="chart-tip" id="chartTip">Нажми на столбик</p>
+    </div>
+    <div class="card nicks-card">
+      <h3>Как мы друг друга называем</h3>
+      <div class="nicks" id="nicks"></div>
+    </div>
+  </section>
+
+  <section id="photos" class="section">
+    <h2>Прикольные фотки</h2>
+    <p class="lead">Самые дурацкие и самые любимые</p>
+    <div class="gallery" id="funGallery"></div>
+    <h2 class="h2-second">И просто красивые</h2>
+    <div class="gallery" id="prettyGallery"></div>
+  </section>
+
+  <section id="jar" class="section">
+    <h2>Банка цитат</h2>
+    <p class="lead">Записочки из нашей переписки. Тяни сколько хочешь</p>
+    <div class="jar-wrap">
+      <button class="jar" id="jarBtn" aria-label="Достать записочку">
+        <svg viewBox="0 0 200 240" aria-hidden="true">
+          <rect x="62" y="8" width="76" height="26" rx="8" class="jar-lid"/>
+          <path d="M58 40h84c0 14 22 22 22 52v110c0 18-14 30-32 30H68c-18 0-32-12-32-30V92c0-30 22-38 22-52z" class="jar-glass"/>
+          <g class="jar-notes">
+            <rect x="60" y="150" width="34" height="22" rx="4" transform="rotate(-14 77 161)"/>
+            <rect x="100" y="160" width="34" height="22" rx="4" transform="rotate(12 117 171)"/>
+            <rect x="74" y="182" width="34" height="22" rx="4" transform="rotate(4 91 193)"/>
+            <rect x="112" y="128" width="30" height="20" rx="4" transform="rotate(-20 127 138)"/>
+            <rect x="58" y="118" width="30" height="20" rx="4" transform="rotate(18 73 128)"/>
+          </g>
+          <text x="100" y="100" text-anchor="middle" class="jar-label">♥</text>
+        </svg>
+      </button>
+      <figure class="note" id="note" aria-live="polite">
+        <blockquote id="noteText">Нажми на баночку 💌</blockquote>
+        <figcaption id="noteBy"></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>сделано Даней с любовью · <span id="year"></span></p>
+    <button class="linkish" id="logout">выйти</button>
+  </footer>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Закрыть">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Предыдущее">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Следующее">›</button>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
